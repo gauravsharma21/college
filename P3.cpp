@@ -8,9 +8,11 @@ struct Student
     char department[10];
 };
 int main()
-{
-    Student s[10];
-    for (int i = 0; i < 10; i++)
+{   
+    int N;
+    cin >> N;
+    Student *s = new Student[N];
+    for (int i = 0; i < N; i++)
     {
         cout << "Details of " << i + 1 << "th student" << endl;
         cout << "Enter name of student" << endl;
@@ -22,7 +24,7 @@ int main()
         cout << "Enter department" << endl;
         cin >> s[i].department;
     }
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < N; i++)
     {
         cout << "Details of " << i + 1 << "th student" << endl;
         cout << s[i].name << endl;
