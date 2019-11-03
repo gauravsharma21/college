@@ -1,53 +1,80 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
-
 class Employee
 {
-    char name[50];
+    string name;
     int empid;
     int age;
-    float exp;
+    float experience;
     int bonus;
+
 public:
     void getData()
     {
-        cout << "Enter name" << endl;
+        cout << "Enter name ";
         cin >> name;
-        cout << "Enter empid" << endl;
+        cout << "Enter empid ";
         cin >> empid;
-        cout << "Enter age" << endl;
+        cout << "Enter age ";
         cin >> age;
-        cout << "Enter experience" << endl;
-        cin >> exp;
-        bonus = 1000;
+        cout << "Enter experience ";
+        cin >> experience;
+        bonus = 5000;
     }
-    void putdata()
+    void outputData()
     {
-        cout << name << " " << empid << " " << age << " " << exp << endl;
+        cout << "Name: " << name << endl
+             << "Empid: " << empid << endl
+             << "Age: " << age << endl
+             << "Experience: " << experience << endl
+             << "Bonus: " << bonus << endl;
     }
-    void setBonus(){
-        if(exp > 2)
-            bonus = 5000;
+    void setBonus()
+    {
+        if (experience > 3)
+            bonus = 10000;
+    }
+    void updateName(string name)
+    {
+        this->name = name;
     }
 };
-
 int main()
 {
-    int n;
     Employee e1;
-    Employee e2[10];
+    cout << "Enter Details of an employee " << endl;
     e1.getData();
-    e1.putdata();
-    cout << "Enter no. of employees" << endl;
+    cout << "Details of the employee " << endl;
+    e1.outputData();
+    int n;
+    cout << "Enter no. of employees to be stored in an array" << endl;
     cin >> n;
+    Employee *emp = new Employee[n];
     for (int i = 0; i < n; i++)
     {
-        e2[i].getData();
+        cout << "Enter details of employee " << i + 1 << endl;
+        emp[i].getData();
+        emp[i].setBonus();
+    }
+    char ans;
+    cout << "Want to update name of some Employee? y or n" << endl;
+    cin >> ans;
+    if (ans == 'y')
+    {
+        cout << "Enter number of employee whose name is to be updated ";
+        int index;
+        cin >> index;
+        string name;
+        cout << "Enter new name ";
+        cin >> name;
+        emp[index - 1].updateName(name);
     }
     for (int i = 0; i < n; i++)
     {
-        e2[i].putdata();
+        cout << "Details of employee " << i + 1 << endl;
+        emp[i].outputData();
+        cout << endl;
     }
     return 0;
 }

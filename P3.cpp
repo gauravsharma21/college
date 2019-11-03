@@ -4,11 +4,12 @@ struct Student
 {
     char name[50];
     int rollno;
-    float marks;
+    float cgpa;
     char department[10];
 };
 int main()
-{   
+{
+    cout << "Enter number of students" << endl;
     int N;
     cin >> N;
     Student *s = new Student[N];
@@ -19,18 +20,18 @@ int main()
         cin >> s[i].name;
         cout << "Enter roll number" << endl;
         cin >> s[i].rollno;
-        cout << "Enter marks" << endl;
-        cin >> s[i].marks;
+        cout << "Enter CGPA" << endl;
+        cin >> s[i].cgpa;
         cout << "Enter department" << endl;
         cin >> s[i].department;
     }
     for (int i = 0; i < N; i++)
     {
         cout << "Details of " << i + 1 << "th student" << endl;
-        cout << s[i].name << endl;
-        cout << s[i].rollno << endl;
-        cout << s[i].marks << endl;
-        cout << s[i].department;
+        cout <<"Name: "<< s[i].name << endl;
+        cout <<"Roll no: "<< s[i].rollno << endl;
+        cout <<"CGPA: "<< s[i].cgpa << endl;
+        cout <<"Department: "<< s[i].department << endl;
     }
     return 0;
 }
